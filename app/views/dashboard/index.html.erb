@@ -31,20 +31,22 @@
   </div>
 
   <div id="tabs-extensions">
-    <% index = 0 %>
-    <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
-        <% index += 1 %>
-        <% refresh = Random.rand() %>
-        <% next if !extension.include?('.sh') %>
-        <% if @loaded_extensions.include? extension %>
-            <% checked = 'checked' %>
-        <% else %>
-            <% checked = '' %>
+    <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
+        <% index = 0 %>
+        <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
+            <% index += 1 %>
+            <% refresh = Random.rand() %>
+            <% next if !extension.include?('.sh') %>
+            <% if @loaded_extensions.include? extension %>
+                <% checked = 'checked' %>
+            <% else %>
+                <% checked = '' %>
+            <% end %>
+            <p>
+              <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
+              <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
+            </p>
         <% end %>
-        <p>
-          <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
-          <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
-        </p>
     <% end %>
     <br/>
     <button class="extension sync" onclick="syncExtensions()">Sync</button>
@@ -58,22 +60,24 @@
       <td class="no-sort">Copy To</td>
       </thead>
       <tbody>
-      <% Dir.foreach("#{@local_repo_path}/payloads/library") do |category| %>
-          <% next if category.include?('.') %>
-          <% Dir.foreach("#{@local_repo_path}/payloads/library/#{category}") do |payload| %>
-              <% next if payload.include?('.') %>
-              <tr>
-                <td><%= payload %></td>
-                <td><%= category.humanize %></td>
-                <td>
-                  <button onclick="copyPayload(1, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
-                    1
-                  </button>
-                  <button onclick="copyPayload(2, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
-                    2
-                  </button>
-                </td>
-              </tr>
+      <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
+          <% Dir.foreach("#{@local_repo_path}/payloads/library") do |category| %>
+              <% next if category.include?('.') %>
+              <% Dir.foreach("#{@local_repo_path}/payloads/library/#{category}") do |payload| %>
+                  <% next if payload.include?('.') %>
+                  <tr>
+                    <td><%= payload %></td>
+                    <td><%= category.humanize %></td>
+                    <td>
+                      <button onclick="copyPayload(1, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
+                        1
+                      </button>
+                      <button onclick="copyPayload(2, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
+                        2
+                      </button>
+                    </td>
+                  </tr>
+              <% end %>
           <% end %>
       <% end %>
       </tbody>
