@@ -20,7 +20,7 @@
  */
 
 html, body{
-    background: #333333;
+    background: #272822;
     color: #CCCCCC;
     font-family: "Trebuchet MS", sans-serif;
     height: 100%;
@@ -32,8 +32,40 @@ html, body{
 
 div[id^=tab]{
     height: 100%;
+    background: #272822;
+    color: #CCCCCC;
 }
 
 .CodeMirror{
     height: 80% !important;
+}
+
+.column-3{
+    column-count: 3;
+}
+
+.dataTables_wrapper{
+    background: #8f8f8f;
+    padding: 10px;
+}
+
+.odd{
+    color: #333333;
+    background: #bbbbbb !important;
+}
+
+.even{
+    color: #333333;
+}
+
+#tabs-debug a{
+    color:#CCCCCC;
+}
+
+#tabs-debug a:visited{
+    color:#CCCCCC;
+}
+
+#tabs-debug a:hover{
+    color:#CCCCCC;
 }
