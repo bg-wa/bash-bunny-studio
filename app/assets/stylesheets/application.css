@@ -13,15 +13,27 @@
  *= require_tree .
  *= require_self
  *= require codemirror
- *= require codemirror/themes/night
+ *= require codemirror/themes/monokai
  *= require jquery-ui
- *= require jquery-ui/ui-darkness
  *= require font-awesome
  *= require dataTables/jquery.dataTables
  */
 
 html, body{
     background: #333333;
-    color: white;
+    color: #CCCCCC;
     font-family: "Trebuchet MS", sans-serif;
+    height: 100%;
+}
+
+#tabs{
+    height: 80%;
+}
+
+div[id^=tab]{
+    height: 100%;
+}
+
+.CodeMirror{
+    height: 80% !important;
 }
