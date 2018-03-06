@@ -4,4 +4,5 @@
   </p>
   <hr/>
   <textarea class="switch-<%= local_assigns[:switch_position].to_s %> payload-editor"><%= local_assigns[:switch_position] == 1 ? @switch_one_text :@switch_two_text %></textarea>
+  <%= render 'dashboard/partials/switch_file_browser', switch_position: local_assigns[:switch_position] %>
 </div>

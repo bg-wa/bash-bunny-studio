@@ -21,6 +21,8 @@ input[type=text]{
 
 .CodeMirror{
   height: 75% !important;
+  width: 80% !important;
+  display: inline-block !important;
 }
 
 .column-3{
@@ -41,14 +43,24 @@ input[type=text]{
   color: #333333;
 }
 
-#tabs-debug a{
+li a{
+  color:#CCCCCC !important;
+}
+
+li a:visited{
   color:#CCCCCC;
 }
 
-#tabs-debug a:visited{
+li a:hover{
   color:#CCCCCC;
 }
 
-#tabs-debug a:hover{
-  color:#CCCCCC;
+.switch-file-browser{
+  float: right;
+  width: 15%;
+  border: solid 1px #CCCCCC;
+  padding: 0 10px 10px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }

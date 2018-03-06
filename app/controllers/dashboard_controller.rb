@@ -119,7 +119,7 @@ class DashboardController < ApplicationController
     end
   end
 
-  def debug_file
-    render plain: File.read("#{@bash_bunny_path}/debug/#{params[:path]}")
+  def raw_file
+    render plain: File.read("#{@bash_bunny_path}#{params[:path]}/#{params[:file]}")
   end
 end

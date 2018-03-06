@@ -1,8 +1,11 @@
 <div id="tabs-debug">
   <% if @bash_bunny_path.include?('/') %>
-      <% Dir.foreach("#{@bash_bunny_path}/debug") do |debug_file| %>
-          <% next if debug_file == '.' || debug_file == '..' %>
-          <a href="/dashboard/debug_file?path=<%= debug_file %>" target="_blank"><%= debug_file %></a>
-      <% end %>
+      <ul>
+        <% path = '/debug' %>
+        <% Dir.foreach("#{@bash_bunny_path}#{path}") do |debug_file| %>
+            <% next if debug_file == '.' || debug_file == '..' %>
+            <li><a href="/dashboard/raw_file?path=<% path %>&file=<%= debug_file %>" target="_blank"><%= debug_file %></a></li>
+        <% end %>
+      </ul>
   <% end %>
 </div>
