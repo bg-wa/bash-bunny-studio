@@ -1,13 +1,16 @@
 <h2>BashBunny Studio</h2>
 
-<p>
+<% highlight = @bash_bunny_path.include?('/') ? 'ui-state-highlight' : 'ui-state-error' %>
+<p class="<%= highlight %> ui-corner-all">
   <b>Mount Point:</b> <%= @bash_bunny_path %>
   <a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
   <% if @bash_bunny_path.include?('/') %>
       <a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %></a>
   <% end %>
 </p>
-
+<p>
+  <hr/>
+</p>
 <div id="tabs">
   <ul>
     <li><a href="#tabs-switch-1">Switch 1</a></li>
@@ -31,24 +34,26 @@
   </div>
 
   <div id="tabs-extensions">
-    <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
-        <% index = 0 %>
-        <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
-            <% index += 1 %>
-            <% refresh = Random.rand() %>
-            <% next if !extension.include?('.sh') %>
-            <% if @loaded_extensions.include? extension %>
-                <% checked = 'checked' %>
-            <% else %>
-                <% checked = '' %>
-            <% end %>
-            <p>
-              <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
-              <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
-            </p>
-        <% end %>
-    <% end %>
-    <br/>
+    <div class="column-3">
+      <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
+          <% index = 0 %>
+          <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
+              <% index += 1 %>
+              <% refresh = Random.rand() %>
+              <% next if !extension.include?('.sh') %>
+              <% if @loaded_extensions.include? extension %>
+                  <% checked = 'checked' %>
+              <% else %>
+                  <% checked = '' %>
+              <% end %>
+              <p>
+                <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
+                <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
+              </p>
+          <% end %>
+      <% end %>
+    </div>
+    <br />
     <button class="extension sync" onclick="syncExtensions()">Sync</button>
   </div>
 

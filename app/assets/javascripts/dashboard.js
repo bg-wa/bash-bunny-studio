@@ -5,7 +5,8 @@ $(document).ready(
         $("textarea").each(function() {
             var editor = CodeMirror.fromTextArea($(this).get(0), {
                 lineNumbers: true,
-                mode: "text/x-sh"
+                mode: 'text/x-sh',
+                theme: 'monokai'
             });
             if(switch_1_editor == null){
                 switch_1_editor = editor
