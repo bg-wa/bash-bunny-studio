@@ -1,0 +1,7 @@
+<div id="tabs-switch-<%= local_assigns[:switch_position].to_s %>">
+  <p>
+    <button class="switch-<%= local_assigns[:switch_position].to_s %> save" onclick="writePayload(<%= local_assigns[:switch_position].to_s %>)">Save</button>
+  </p>
+  <hr/>
+  <textarea class="switch-<%= local_assigns[:switch_position].to_s %> payload-editor"><%= local_assigns[:switch_position] == 1 ? @switch_one_text :@switch_two_text %></textarea>
+</div>
