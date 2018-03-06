@@ -5,7 +5,12 @@
   <span class="pull-setting"><%= "#{Rails.root}/#{@local_repo_path}" %></span>
   <p id="git-action-buttons">
     <button class="git sync clone-setting" onclick="cloneRepo()">Clone (90 Sec)</button>
-    <button class="git pull pull-setting" onclick="pullRepo()">Pull</button>
-    <button class="git delete pull-setting" onclick="deleteRepo()">Delete</button>
+    <input type="text" id="git-command" class="pull-setting" placeholder="e.g. checkout develop" />
+    <button class="git pull pull-setting" onclick="gitCommand()">Run Command</button>
+    <p id="git-command-response" class="pull-setting">
+    </p>
+    <p>
+      <button class="git delete pull-setting" onclick="deleteRepo()">Delete</button>
+    </p>
   </p>
 </div>
