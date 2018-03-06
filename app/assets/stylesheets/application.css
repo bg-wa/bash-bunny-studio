@@ -15,6 +15,13 @@
  *= require codemirror
  *= require codemirror/themes/night
  *= require jquery-ui
+ *= require jquery-ui/ui-darkness
  *= require font-awesome
  *= require dataTables/jquery.dataTables
  */
+
+html, body{
+    background: #333333;
+    color: white;
+    font-family: "Trebuchet MS", sans-serif;
+}
