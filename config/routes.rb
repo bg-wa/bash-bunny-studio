@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard/check_repo'
   get 'dashboard/clone_repo'
-  get 'dashboard/pull_repo'
+  get 'dashboard/git_command'
   get 'dashboard/delete_repo'
   get 'dashboard/eject_bunny'
   get 'dashboard/copy_payload'

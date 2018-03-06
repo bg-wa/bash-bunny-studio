@@ -87,11 +87,11 @@ function cloneRepo(){
     }
 }
 
-function pullRepo(){
-    $.getJSON('/dashboard/pull_repo', function(response){
-        alert('Repo Pull Complete');
+function gitCommand(){
+    $.getJSON('/dashboard/git_command?command=' + $('#git-command').val(), function(response){
+        $('#git-command-response').text(response.output);
     }, function(err){
-        alert('Repo NOT Pulled')
+        alert('Command NOT Executed')
     });
 }
 

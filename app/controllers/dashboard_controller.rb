@@ -39,11 +39,11 @@ class DashboardController < ApplicationController
     }
   end
 
-  def pull_repo
-    git = Git.open(@local_repo_path)
-    git.pull
+  def git_command
+    output = `cd #{@local_repo_path} && git #{params[:command]}`
     render json: {
-        status: 200
+        status: 200,
+        output: output
     }
   end
 
