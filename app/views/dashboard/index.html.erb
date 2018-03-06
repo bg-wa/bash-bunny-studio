@@ -1,112 +1,16 @@
 <h2>BashBunny Studio</h2>
 
-<% highlight = @bash_bunny_path.include?('/') ? 'ui-state-highlight' : 'ui-state-error' %>
-<p class="<%= highlight %> ui-corner-all">
-  <b>Mount Point:</b> <%= @bash_bunny_path %>
-  <a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
-  <% if @bash_bunny_path.include?('/') %>
-      <a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %></a>
-  <% end %>
-</p>
+<%= render 'dashboard/partials/bunny_mount_point' %>
+
 <p>
   <hr/>
 </p>
 <div id="tabs">
-  <ul>
-    <li><a href="#tabs-switch-1">Switch 1</a></li>
-    <li><a href="#tabs-switch-2">Switch 2</a></li>
-    <li><a href="#tabs-extensions">Extensions</a></li>
-    <li><a href="#tabs-payloads">Payloads</a></li>
-    <li><a href="#tabs-git">Git</a></li>
-    <li><a href="#tabs-debug">Debug</a></li>
-  </ul>
-
-  <div id="tabs-switch-1">
-    <textarea class="switch-one payload-editor"><%= @switch_one_text %></textarea>
-    <br/>
-    <button class="switch-one save" onclick="writePayload(1)">Save</button>
-  </div>
-
-  <div id="tabs-switch-2">
-    <textarea calss="switch-two payload-editor"><%= @switch_two_text %></textarea>
-    <br/>
-    <button class="switch-two save" onclick="writePayload(2)">Save</button>
-  </div>
-
-  <div id="tabs-extensions">
-    <div class="column-3">
-      <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
-          <% index = 0 %>
-          <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
-              <% index += 1 %>
-              <% refresh = Random.rand() %>
-              <% next if !extension.include?('.sh') %>
-              <% if @loaded_extensions.include? extension %>
-                  <% checked = 'checked' %>
-              <% else %>
-                  <% checked = '' %>
-              <% end %>
-              <p>
-                <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
-                <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
-              </p>
-          <% end %>
-      <% end %>
-    </div>
-    <br />
-    <button class="extension sync" onclick="syncExtensions()">Sync</button>
-  </div>
-
-  <div id="tabs-payloads">
-    <table class="data-table" width="100%">
-      <thead>
-      <td>Name</td>
-      <td>Category</td>
-      <td class="no-sort">Copy To</td>
-      </thead>
-      <tbody>
-      <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
-          <% Dir.foreach("#{@local_repo_path}/payloads/library") do |category| %>
-              <% next if category.include?('.') %>
-              <% Dir.foreach("#{@local_repo_path}/payloads/library/#{category}") do |payload| %>
-                  <% next if payload.include?('.') %>
-                  <tr>
-                    <td><%= payload %></td>
-                    <td><%= category.humanize %></td>
-                    <td>
-                      <button onclick="copyPayload(1, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
-                        1
-                      </button>
-                      <button onclick="copyPayload(2, '<%= "#{@local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
-                        2
-                      </button>
-                    </td>
-                  </tr>
-              <% end %>
-          <% end %>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div id="tabs-git">
-    <h4 class="clone-setting-repo clone-setting">Repo:</h4>
-    <input type="text" id="git-repo" class="clone-setting">
-    <h4 class="pull-setting">Local Location:</h4>
-    <span class="pull-setting"><%= "#{Rails.root}/#{@local_repo_path}" %></span>
-    <p id="git-action-buttons">
-      <button class="git sync clone-setting" onclick="cloneRepo()">Clone (90 Sec)</button>
-      <button class="git pull pull-setting" onclick="pullRepo()">Pull</button>
-      <button class="git delete pull-setting" onclick="deleteRepo()">Delete</button>
-    </p>
-  </div>
-
-  <div id="tabs-debug">
-    <% if @bash_bunny_path.include?('/') %>
-        <% Dir.foreach("#{@bash_bunny_path}/debug") do |debug_file| %>
-            <% next if debug_file == '.' || debug_file == '..' %>
-            <a href="/dashboard/debug_file?path=<%= debug_file %>" target="_blank"><%= debug_file %></a>
-        <% end %>
-    <% end %>
-  </div>
+  <%= render 'dashboard/partials/tab_menu' %>
+  <%= render 'dashboard/partials/switch_1' %>
+  <%= render 'dashboard/partials/switch_2' %>
+  <%= render 'dashboard/partials/extensions' %>
+  <%= render 'dashboard/partials/payloads' %>
+  <%= render 'dashboard/partials/git' %>
+  <%= render 'dashboard/partials/debug' %>
 </div>

@@ -1,0 +1,23 @@
+<div id="tabs-extensions">
+  <div class="column-3">
+    <% if File.exist?("#{@local_repo_path}/payloads/extensions") %>
+        <% index = 0 %>
+        <% Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension| %>
+            <% index += 1 %>
+            <% refresh = Random.rand() %>
+            <% next if !extension.include?('.sh') %>
+            <% if @loaded_extensions.include? extension %>
+                <% checked = 'checked' %>
+            <% else %>
+                <% checked = '' %>
+            <% end %>
+            <p>
+              <label for="extension-checkbox-<%= refresh %>-<%= index %>"><%= IO.readlines("#{@local_repo_path}/payloads/extensions/#{extension}").last.split.last %></label>
+              <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
+            </p>
+        <% end %>
+    <% end %>
+  </div>
+  <br />
+  <button class="extension sync" onclick="syncExtensions()">Sync</button>
+</div>
