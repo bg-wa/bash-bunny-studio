@@ -9,14 +9,11 @@ class DashboardController < ApplicationController
   end
 
   def write_payload
-    if(params[:switch_position].to_i ==1)
-      payload_file = @payload_one_path
-    else
-      payload_file = @payload_two_path
-    end
-    File.open(payload_file, 'w') { |file| file.write(params[:payload]) }
+    file_path = "#{@bash_bunny_path}#{params[:file]}"
+    File.open(file_path, 'w') { |file| file.write(params[:payload]) }
     render json: {
-        status: 200
+        status: 200,
+        file: file_path
     }
   end
 
@@ -56,16 +53,17 @@ class DashboardController < ApplicationController
   end
 
   def sync_extensions
-    FileUtils.rm_r "#{@bash_bunny_path}/payloads/extensions", force: true
-    FileUtils.mkpath "#{@bash_bunny_path}/payloads/extensions"
+    extension_path = '/payloads/extensions'
+    FileUtils.rm_r "#{@bash_bunny_path}#{extension_path}", force: true
+    FileUtils.mkpath "#{@bash_bunny_path}#{extension_path}"
     extensions = params[:extensions].split(',')
     index = 0
     if @bash_bunny_path.include?('/')
-      Dir.foreach("#{@local_repo_path}/payloads/extensions") do |extension|
+      Dir.foreach("#{@local_repo_path}#{extension_path}") do |extension|
         index += 1
         next if extension == '.' || extension == '..'
         if extensions.include?(index.to_s)
-          FileUtils.cp "#{@local_repo_path}/payloads/extensions/#{extension}", "#{@bash_bunny_path}/payloads/extensions/#{extension}"
+          FileUtils.cp "#{@local_repo_path}#{extension_path}/#{extension}", "#{@bash_bunny_path}#{extension_path}/#{extension}"
         end
       end
     end
@@ -106,20 +104,15 @@ class DashboardController < ApplicationController
   end
 
   def payload_script
-    if params[:switch_position].to_i == 1
-      render json: {
-          status: 200,
-          payload: @switch_one_text
-      }
-    else
-      render json: {
-          status: 200,
-          payload: @switch_two_text
-      }
-    end
+    file_path = "#{@bash_bunny_path}#{params[:file]}"
+    render json: {
+        status: 200,
+        payload: File.exist?(file_path) ? File.read(file_path) : '',
+        file: file_path
+    }
   end
 
-  def debug_file
-    render plain: File.read("#{@bash_bunny_path}/debug/#{params[:path]}")
+  def raw_file
+    render plain: File.read("#{@bash_bunny_path}#{params[:path]}/#{params[:file]}")
   end
 end
