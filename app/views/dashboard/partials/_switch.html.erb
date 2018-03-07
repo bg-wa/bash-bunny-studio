@@ -1,8 +1,11 @@
-<div id="tabs-switch-<%= local_assigns[:switch_position].to_s %>">
+<% switch_position = local_assigns[:switch_position].to_s %>
+<div id="tabs-switch-<%= switch_position %>">
   <p>
-    <button class="switch-<%= local_assigns[:switch_position].to_s %> save" onclick="writePayload(<%= local_assigns[:switch_position].to_s %>)">Save</button>
+    <button class="switch-<%= switch_position %> save" onclick="writePayload(<%= switch_position %>)">Save</button>
   </p>
+  <p class="switch-<%= switch_position %> local-path"></p>
   <hr/>
-  <textarea class="switch-<%= local_assigns[:switch_position].to_s %> payload-editor"><%= local_assigns[:switch_position] == 1 ? @switch_one_text :@switch_two_text %></textarea>
-  <%= render 'dashboard/partials/switch_file_browser', switch_position: local_assigns[:switch_position] %>
+  <textarea class="switch-<%= switch_position %> payload-editor">
+  </textarea>
+  <%= render 'dashboard/partials/switch_file_browser', switch_position: switch_position %>
 </div>

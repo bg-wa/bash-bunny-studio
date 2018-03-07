@@ -64,3 +64,12 @@ li a:hover{
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
+.switch-file-browser ul{
+  padding-left: 15px;
+}
+
+.active-file, .local-path{
+  color: #007FFF !important;
+}
+

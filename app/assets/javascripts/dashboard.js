@@ -14,15 +14,16 @@ $(document).ready(
                 switch_2_editor = editor
             }
         });
+        updatePayloadEditor('/payloads/switch1/', 'payload.txt', 1)
         $("#tabs").tabs({
             activate: function (event, ui) {
                 var active = $('#tabs').tabs('option', 'active');
                 switch(active) {
                     case 0:
-                        updatePayloadEditor(1)
+                        updatePayloadEditor('/payloads/switch1/', 'payload.txt', 1)
                         break;
                     case 1:
-                        updatePayloadEditor(2)
+                        updatePayloadEditor('/payloads/switch2/', 'payload.txt', 2)
                         break;
                     case 4:
                         checkLocalRepo();
@@ -50,11 +51,12 @@ function writePayload(switch_position){
     }else{
         payload_text = switch_2_editor.getValue()
     }
+    var file = $('.switch-' + switch_position + '.local-path').text()
     $.post('/dashboard/write_payload', {
-        switch_position: switch_position,
-        payload: payload_text
+        payload: payload_text,
+        file: file
     }, function(response){
-        alert('Payload Saved to Switch ' + switch_position)
+        alert('Payload Saved to ' + response.file)
     });
 }
 
@@ -134,12 +136,16 @@ function eject_bunny() {
     });
 }
 
-function updatePayloadEditor(switch_position){
-    $.getJSON('/dashboard/payload_script?switch_position=' + switch_position, function(response){
+function updatePayloadEditor(path, file, switch_position){
+    var file_path = path + '/' + file
+    $.getJSON('/dashboard/payload_script?file=' + file_path, function(response){
         if(switch_position == 1){
             switch_1_editor.setValue(response.payload)
         }else{
             switch_2_editor.setValue(response.payload)
         }
+        $('.edit-file-link').removeClass('active-file')
+        $('.switch-' + switch_position + '.edit-file-link:contains("' + file + '")').addClass('active-file')
+        $('.switch-' + switch_position + '.local-path').text(file_path)
     });
 }
