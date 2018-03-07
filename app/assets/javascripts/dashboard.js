@@ -14,16 +14,16 @@ $(document).ready(
                 switch_2_editor = editor
             }
         });
-        updatePayloadEditor('/payloads/switch1/', 'payload.txt', 1)
+        updatePayloadEditor('/payloads/switch1', 'payload.txt', 1)
         $("#tabs").tabs({
             activate: function (event, ui) {
                 var active = $('#tabs').tabs('option', 'active');
                 switch(active) {
                     case 0:
-                        updatePayloadEditor('/payloads/switch1/', 'payload.txt', 1)
+                        updatePayloadEditor('/payloads/switch1', 'payload.txt', 1)
                         break;
                     case 1:
-                        updatePayloadEditor('/payloads/switch2/', 'payload.txt', 2)
+                        updatePayloadEditor('/payloads/switch2', 'payload.txt', 2)
                         break;
                     case 4:
                         checkLocalRepo();
