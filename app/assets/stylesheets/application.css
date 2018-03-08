@@ -10,11 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  *= require codemirror
  *= require codemirror/themes/monokai
- *= require jquery-ui
  *= require font-awesome
  *= require dataTables/jquery.dataTables
+ *= require foundation/sd-ui-dark-foundation/css/foundation
+ *= require studio
  */

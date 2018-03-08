@@ -1,0 +1,28 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">BashBunny Studio</a></h1>
+    </li>
+  </ul>
+
+  <% highlight = bunny_mounted? ? 'success' : 'alert' %>
+  <section class="top-bar-section">
+    <ul class="right <%= highlight %>">
+      <li class="active"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
+      <% if bunny_mounted? %>
+        <li><a href="#" onclick="eject_bunny()" ><%= fa_icon "eject" %></a></li>
+      <% end %>
+      <li><a href="#" ><%= bunny_path || 'Bash Bunny Not Found' %></a></li>
+    </ul>
+    <ul class="left">
+      <li class="<%= active_page(studio_switch1_path) %>"><%= link_to 'Switch 1', studio_switch1_path %></li>
+      <li class="<%= active_page(studio_switch2_path) %>"><%= link_to 'Switch 2', studio_switch2_path %></li>
+      <li class="<%= active_page(studio_extensions_path) %>"><%= link_to 'Extensions', studio_extensions_path %></li>
+      <li class="<%= active_page(studio_payloads_path) %>"><%= link_to 'Payloads', studio_payloads_path %></li>
+      <li class="<%= active_page(studio_loot_path) %>"><%= link_to 'Loot', studio_loot_path %></li>
+      <li class="<%= active_page(studio_debug_path) %>"><%= link_to 'Debug', studio_debug_path %></li>
+      <li class="<%= active_page(studio_git_path) %>"><%= link_to 'Git', studio_git_path %></li>
+      <li class="<%= active_page(studio_learn_path) %>"><%= link_to 'Learn', studio_learn_path %></li>
+    </ul>
+  </section>
+</nav>

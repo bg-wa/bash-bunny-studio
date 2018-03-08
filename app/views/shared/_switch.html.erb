@@ -1,0 +1,9 @@
+<% switch_position = local_assigns[:switch_position].to_s %>
+<p>
+  <button class="switch-<%= switch_position %> save button" onclick="writePayload(<%= switch_position %>)">Save</button>
+</p>
+<p class="switch-<%= switch_position %> local-path"></p>
+<hr/>
+<textarea class="switch-<%= switch_position %> payload-editor">
+  </textarea>
+<%= render 'shared/switch_file_browser', switch_position: switch_position %>
