@@ -6,19 +6,20 @@
   <td class="no-sort">Copy To</td>
   </thead>
   <tbody>
-  <% if File.exist?("#{local_repo_path}/payloads/extensions") %>
-      <% Dir.foreach("#{local_repo_path}/payloads/library") do |category| %>
+  <% library_path = "#{local_repo_path}/payloads/library" %>
+  <% if File.exist?(library_path) %>
+      <% Dir.foreach(library_path) do |category| %>
           <% next if category.include?('.') %>
-          <% Dir.foreach("#{local_repo_path}/payloads/library/#{category}") do |payload| %>
+          <% Dir.foreach("#{library_path}/#{category}") do |payload| %>
               <% next if payload.include?('.') %>
               <tr>
                 <td><%= payload %></td>
                 <td><%= category.humanize %></td>
                 <td>
-                  <button onclick="copyPayload(1, '<%= "#{local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
+                  <button class="button" onclick="copyPayload(1, '<%= "#{library_path}/#{category}/#{payload}" %>')">Switch
                     1
                   </button>
-                  <button onclick="copyPayload(2, '<%= "#{local_repo_path}/payloads/library/#{category}/#{payload}" %>')">Switch
+                  <button class="button" onclick="copyPayload(2, '<%= "#{library_path}/#{category}/#{payload}" %>')">Switch
                     2
                   </button>
                 </td>

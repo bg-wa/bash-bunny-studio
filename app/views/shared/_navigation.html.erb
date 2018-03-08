@@ -8,11 +8,12 @@
   <% highlight = bunny_mounted? ? 'success' : 'alert' %>
   <section class="top-bar-section">
     <ul class="right <%= highlight %>">
-      <li class="active"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
       <% if bunny_mounted? %>
-        <li><a href="#" onclick="eject_bunny()" ><%= fa_icon "eject" %></a></li>
+          <li class="active"><a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %></a></li>
+      <% else %>
+          <li class="active"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
       <% end %>
-      <li><a href="#" ><%= bunny_path || 'Bash Bunny Not Found' %></a></li>
+      <li><a href="#"><%= bunny_path || 'Bash Bunny Not Found' %></a></li>
     </ul>
     <ul class="left">
       <li class="<%= active_page(studio_switch1_path) %>"><%= link_to 'Switch 1', studio_switch1_path %></li>

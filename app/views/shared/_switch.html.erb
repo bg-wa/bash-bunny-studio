@@ -1,9 +1,17 @@
 <% switch_position = local_assigns[:switch_position].to_s %>
-<p>
-  <button class="switch-<%= switch_position %> save button" onclick="writePayload(<%= switch_position %>)">Save</button>
-</p>
-<p class="switch-<%= switch_position %> local-path"></p>
+<div class="row">
+  <div class="medium-1 columns">
+    <button class="switch-<%= switch_position %> save button" onclick="writePayload(<%= switch_position %>)">Save</button>
+  </div>
+  <div class="medium-11 columns"><p class="switch-<%= switch_position %> local-path"></p></div>
+</div>
 <hr/>
-<textarea class="switch-<%= switch_position %> payload-editor">
-  </textarea>
-<%= render 'shared/switch_file_browser', switch_position: switch_position %>
+<div class="row">
+  <div class="medium-10 columns">
+    <textarea class="switch-<%= switch_position %> payload-editor">
+    </textarea>
+  </div>
+  <div class="medium-2 columns">
+    <%= render 'shared/switch_file_browser', switch_position: switch_position %>
+  </div>
+</div>

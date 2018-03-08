@@ -2,7 +2,7 @@
 
 This a web-based IDE to manage the Bash Bunny.
 
-It can run on any host, and allows you to mount/unmout the bunny, clone a BB github repo, one-click copy payloads to either switch, in-browser edit payloads, manage extensions, and view debug logs.
+It can run on a host machine, and allows you to mount/unmout the bunny, clone a BB github repo, one-click copy payloads to either switch, in-browser edit payloads, manage extensions, and view debug logs.
 
 **Setup**
 - Install Ruby

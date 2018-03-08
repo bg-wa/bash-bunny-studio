@@ -34,7 +34,7 @@ class StudioController < ApplicationController
 
   def delete_repo
     FileUtils.rm_r local_repo_path, force: true
-    FileUtils.mkpath local_repo_path unless File.exist?(local_repo_path)
+    FileUtils.mkpath local_repo_path
     render json: {
         status: 200
     }
@@ -73,7 +73,6 @@ class StudioController < ApplicationController
     if File.exist?(bunny_path)
       begin
         `umount #{bunny_path}`
-        FileUtils.rm_r bunny_path
         render json: {
             status: 200
         }
@@ -102,5 +101,10 @@ class StudioController < ApplicationController
 
   def raw_file
     render plain: File.read("#{bunny_path}#{params[:path]}/#{params[:file]}")
+  end
+
+  def debug
+    debug_path = "#{bunny_path}/debug"
+    FileUtils.mkpath debug_path unless File.exist?(debug_path)
   end
 end

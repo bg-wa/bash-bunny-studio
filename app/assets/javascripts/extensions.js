@@ -1,9 +1,3 @@
-$(document).ready(
-    function(){
-
-    }
-);
-
 function syncExtensions(){
     var extensions = $('input[id^=extension-checkbox]')
     var extension_ids = []
