@@ -4,16 +4,28 @@
   <title>BunnyStudio</title>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 
 <body>
-<%= render 'shared/navigation' %>
-<br/>
-<div class="row">
-  <div class="medium-12 columns">
-    <%= yield %>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+
+    <%= render 'shared/navigation' %>
+
+    <%= render 'shared/mobile_navigation' %>
+
+    <section class="main-section">
+      <div class="row">
+        <div class="medium-12 columns">
+          <%= yield %>
+        </div>
+      </div>
+    </section>
+
+
+    <a class="exit-off-canvas"></a>
   </div>
 </div>
 </body>
