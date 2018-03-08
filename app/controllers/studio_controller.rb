@@ -104,7 +104,9 @@ class StudioController < ApplicationController
   end
 
   def debug
-    debug_path = "#{bunny_path}/debug"
-    FileUtils.mkpath debug_path unless File.exist?(debug_path)
+    if bunny_mounted?
+      debug_path = "#{bunny_path}/debug"
+      FileUtils.mkpath debug_path unless File.exist?(debug_path)
+    end
   end
 end
