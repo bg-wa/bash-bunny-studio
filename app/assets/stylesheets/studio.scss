@@ -1,8 +1,13 @@
+html, body{
+  height: 100%;
+}
+
 .column-3{
   column-count: 3;
 }
 
 .CodeMirror{
+  height: 75vh;
 }
 
 .data-table .odd{
