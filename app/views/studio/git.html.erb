@@ -1,0 +1,21 @@
+<%= javascript_include_tag 'git' %>
+<% if File.exist?("#{local_repo_path}/README.md") %>
+    <label for="local-repo">Local Repo:</label>
+    <p id="local-repo"><%= "#{bunny_path}/#{local_repo_path}" %></p>
+
+    <label for="git-command">Git:</label>
+    <input type="text" id="git-command" placeholder="e.g. checkout develop"/>
+    <button class="git pull button" onclick="gitCommand()">Run Command</button>
+    <p id="git-command-response">
+    </p>
+
+    <p>
+      <button class="git delete button" onclick="deleteRepo()">Delete</button>
+    </p>
+<% else %>
+    <label for="git-repo">Git Repo:</label>
+    <input type="text" id="git-repo"/>
+    <button class="git clone button" onclick="cloneRepo()">Clone (90 Sec)</button>
+<% end %>
+
+

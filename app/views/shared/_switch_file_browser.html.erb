@@ -1,9 +1,9 @@
 <div class="switch-file-browser">
   <h4>Files</h4>
-  <% if @bash_bunny_path.include?('/') %>
+  <% if bunny_mounted? %>
       <ul>
         <% path = "/payloads/switch#{local_assigns[:switch_position].to_s}" %>
-        <% Dir.foreach("#{@bash_bunny_path}#{path}") do |switch_file| %>
+        <% Dir.foreach("#{bunny_path}#{path}") do |switch_file| %>
             <% next if switch_file == '.' || switch_file == '..' %>
             <li><a class="switch-<%= local_assigns[:switch_position].to_s %> edit-file-link" onclick="updatePayloadEditor('<%= path %>', '<%= switch_file %>', <%= local_assigns[:switch_position].to_s %>)"><%= switch_file %></a></li>
         <% end %>

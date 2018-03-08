@@ -1,8 +1,0 @@
-<% highlight = @bash_bunny_path.include?('/') ? 'ui-state-highlight' : 'ui-state-error' %>
-<p class="<%= highlight %> ui-corner-all">
-  <b>Mount Point:</b> <%= @bash_bunny_path %>
-  <a href="#" onclick="location.reload();"><%= fa_icon "refresh" %></a>
-  <% if @bash_bunny_path.include?('/') %>
-      <a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %></a>
-  <% end %>
-</p>

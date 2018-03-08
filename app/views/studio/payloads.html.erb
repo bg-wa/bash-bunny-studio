@@ -1,0 +1,31 @@
+<%= javascript_include_tag 'payloads' %>
+<table class="data-table" width="100%">
+  <thead>
+  <td>Name</td>
+  <td>Category</td>
+  <td class="no-sort">Copy To</td>
+  </thead>
+  <tbody>
+  <% library_path = "#{local_repo_path}/payloads/library" %>
+  <% if File.exist?(library_path) %>
+      <% Dir.foreach(library_path) do |category| %>
+          <% next if category.include?('.') %>
+          <% Dir.foreach("#{library_path}/#{category}") do |payload| %>
+              <% next if payload.include?('.') %>
+              <tr>
+                <td><%= payload %></td>
+                <td><%= category.humanize %></td>
+                <td>
+                  <button class="button" onclick="copyPayload(1, '<%= "#{library_path}/#{category}/#{payload}" %>')">Switch
+                    1
+                  </button>
+                  <button class="button" onclick="copyPayload(2, '<%= "#{library_path}/#{category}/#{payload}" %>')">Switch
+                    2
+                  </button>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<%= javascript_include_tag 'extensions' %>
+<button class="extension sync button" onclick="syncExtensions()">Sync</button>
+<hr/>
+<div class="column-3">
+  <% if File.exist?("#{local_repo_path}/payloads/extensions") %>
+      <% index = 0 %>
+      <% Dir.foreach("#{local_repo_path}/payloads/extensions") do |extension| %>
+          <% index += 1 %>
+          <% refresh = Random.rand() %>
+          <% next if !extension.include?('.sh') %>
+          <% if @loaded_extensions.include? extension %>
+              <% checked = 'checked' %>
+          <% else %>
+              <% checked = '' %>
+          <% end %>
+          <%= IO.readlines("#{local_repo_path}/payloads/extensions/#{extension}").last.split.last %>
+          <div class="switch">
+            <input type="checkbox" name="extension-checkbox-<%= refresh %>-<%= index %>" id="extension-checkbox-<%= refresh %>-<%= index %>" <%= checked %>>
+            <label for="extension-checkbox-<%= refresh %>-<%= index %>"></label>
+          </div>
+      <% end %>
+  <% end %>
+</div>

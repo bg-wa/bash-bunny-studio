@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require rails-ujs
-//= require turbolinks
 //= require codemirror
 //= require codemirror/modes/shell
 //= require dataTables/jquery.dataTables
-//= require_tree .
+//= require foundation
+//= require studio
+
+$(function(){ $(document).foundation(); });

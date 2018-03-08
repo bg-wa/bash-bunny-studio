@@ -1,0 +1,2 @@
+module StudioHelper
+end

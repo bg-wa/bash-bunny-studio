@@ -3,17 +3,24 @@ class ApplicationController < ActionController::Base
   include Sys
 
   protect_from_forgery with: :exception
-  before_action :bunny_paths
 
-  def bunny_paths
+  helper_method :bunny_path
+  helper_method :bunny_mounted?
+  helper_method :local_repo_path
+
+  def bunny_path
     bunny_mount = Filesystem.mounts.select { |mount| mount.mount_point.include? 'BashBunny' }.first
-    if bunny_mount.nil?
-      @bash_bunny_path = 'BashBunny Not Found'
-    else
-      @bash_bunny_path = bunny_mount.mount_point
-    end
-    @local_repo_path = 'public/bash_bunny_repo'
-    FileUtils.mkpath @local_repo_path unless File.exist?(@local_repo_path)
+    bunny_mount.nil? ? nil : bunny_mount.mount_point
+  end
+
+  def local_repo_path
+    repo_path = 'public/bash_bunny_repo'
+    FileUtils.mkpath repo_path unless File.exist?(repo_path)
+    repo_path
+  end
+
+  def bunny_mounted?
+    bunny_path.nil? ? false : true
   end
 
 end
