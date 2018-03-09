@@ -1,1 +1,5 @@
 <%= javascript_include_tag 'firmware' %>
+<% if bunny_mounted? %>
+    <% version_file = "#{bunny_path}/version.txt" %>
+  Version: <%= File.exist?(version_file) ? File.read(version_file) : 'No Version Found' %>
+<% end %>
