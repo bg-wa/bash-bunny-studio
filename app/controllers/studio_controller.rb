@@ -1,4 +1,7 @@
 class StudioController < ApplicationController
+  require 'nokogiri'
+  require 'open-uri'
+
   def switch1
     @page_title = 'Switch 1'
   end
@@ -39,6 +42,10 @@ class StudioController < ApplicationController
 
   def learn
     @page_title = 'Learn'
+  end
+
+  def firmware
+    @page_title = 'Firmware'
   end
 
   # API

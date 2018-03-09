@@ -64,5 +64,3 @@ gem 'git'
 
 gem 'font-awesome-rails'
 gem 'jquery-datatables-rails', '~> 3.4.0'
-
-gem 'inline_svg'

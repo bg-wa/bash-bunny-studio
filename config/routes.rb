@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'debug'
     get 'git'
     get 'learn'
+    get 'firmware'
 
     # API
     get 'clone_repo'
