@@ -23,6 +23,22 @@ html, body{
 }
 
 .logo{
-  margin: 5px;
+  margin: 3px 10px 10px 5px;
   display: inline-block;
+  border: solid 2px;
+  border-radius: 20px;
+}
+
+.bunny-status {
+  background: none repeat scroll 0% 0%;
+}
+
+.unmounted{
+  background-color: red;
+  border-color: red;
+}
+
+.mounted{
+  background-color: green;
+  border-color: green;
 }

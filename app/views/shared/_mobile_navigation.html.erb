@@ -10,9 +10,9 @@
     <li class="<%= active_page(studio_learn_path) %>"><%= link_to 'Learn', studio_learn_path %></li>
 
     <% if bunny_mounted? %>
-        <li class="success"><a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %> : <%= bunny_path %></a></li>
+        <li class="bunny-status mounted"><a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %> : <%= bunny_path %></a></li>
     <% else %>
-        <li class="alert"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %> : Bash Bunny Not Found</a>
+        <li class="bunny-status unmounted"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %> : Bash Bunny Not Found</a>
     <% end %>
   </ul>
 </aside>

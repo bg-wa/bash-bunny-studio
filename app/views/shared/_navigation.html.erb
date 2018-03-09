@@ -1,6 +1,8 @@
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
-    <div class="logo"><%= image_tag 'bashbunny.svg', size: '35x35', color: 'red' %></div> BashBunny Studio
+    <div class="logo <%= bunny_mounted? ? 'mounted' : 'unmounted' %>">
+      <%= image_tag 'bashbunny.svg', size: '35x35', color: 'red' %>
+    </div> BashBunny Studio
   </ul>
 
   <% highlight = bunny_mounted? ? 'success' : 'alert' %>
