@@ -1,5 +1,26 @@
 class StudioController < ApplicationController
+  def switch1
+    @page_title = 'Switch 1'
+  end
+
+  def switch2
+    @page_title = 'Switch 2'
+  end
+
+  def payloads
+    @page_title = 'Payloads'
+  end
+
+  def git
+    @page_title = 'Git'
+  end
+
+  def loot
+    @page_title = 'Loot'
+  end
+
   def extensions
+    @page_title = 'Extensions'
     @loaded_extensions = []
     if bunny_mounted?
       Dir.foreach("#{bunny_path}/payloads/extensions") do |extension|
@@ -7,6 +28,20 @@ class StudioController < ApplicationController
       end
     end
   end
+
+  def debug
+    @page_title = 'Debug'
+    if bunny_mounted?
+      debug_path = "#{bunny_path}/debug"
+      FileUtils.mkpath debug_path unless File.exist?(debug_path)
+    end
+  end
+
+  def learn
+    @page_title = 'Learn'
+  end
+
+  # API
 
   def write_payload
     file_path = "#{bunny_path}#{params[:file]}"
@@ -101,12 +136,5 @@ class StudioController < ApplicationController
 
   def raw_file
     render plain: File.read("#{bunny_path}#{params[:path]}/#{params[:file]}")
-  end
-
-  def debug
-    if bunny_mounted?
-      debug_path = "#{bunny_path}/debug"
-      FileUtils.mkpath debug_path unless File.exist?(debug_path)
-    end
   end
 end

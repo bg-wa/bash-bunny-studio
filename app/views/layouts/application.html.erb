@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BunnyStudio</title>
+  <title>BashBunny Studio</title>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1 user-scalable=no">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
@@ -16,6 +16,7 @@
 
     <%= render 'shared/mobile_navigation' %>
 
+    <div class="alert-box text-center"><%= @page_title %></div>
     <section class="main-section">
       <div class="row">
         <div class="medium-12 columns">

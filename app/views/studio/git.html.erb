@@ -1,5 +1,4 @@
 <%= javascript_include_tag 'git' %>
-<h3>Git</h3>
 <% if File.exist?("#{local_repo_path}/README.md") %>
     <label for="local-repo">Local Repo:</label>
     <p id="local-repo"><%= "#{bunny_path}/#{local_repo_path}" %></p>

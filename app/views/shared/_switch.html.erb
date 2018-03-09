@@ -1,9 +1,9 @@
 <% switch_position = local_assigns[:switch_position].to_s %>
 <div class="row">
-  <div class="medium-1 columns">
+  <div class="small-3 medium-1 columns">
     <button class="switch-<%= switch_position %> save button" onclick="writePayload(<%= switch_position %>)">Save</button>
   </div>
-  <div class="medium-11 columns"><p class="switch-<%= switch_position %> local-path"></p></div>
+  <div class="small-9 medium-11 columns"><p class="switch-<%= switch_position %> local-path"></p></div>
 </div>
 <div class="row">
   <div class="medium-10 columns">
