@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'debug' %>
 <% if bunny_mounted? %>
-    <ul>
+    <ul class="vertical menu">
       <% path = '/debug' %>
       <% Dir.foreach("#{bunny_path}#{path}") do |debug_file| %>
           <% next if debug_file == '.' || debug_file == '..' %>

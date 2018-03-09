@@ -1,7 +1,7 @@
 <div class="switch-file-browser">
   <h4>Files</h4>
   <% if bunny_mounted? %>
-      <ul>
+      <ul class="vertical menu">
         <% path = "/payloads/switch#{local_assigns[:switch_position].to_s}" %>
         <% Dir.foreach("#{bunny_path}#{path}") do |switch_file| %>
             <% next if switch_file == '.' || switch_file == '..' %>
