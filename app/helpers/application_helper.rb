@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def active_page(path)
-    'active' if request.url.include?(path)
+  def active_page(page_title)
+    'is-active' if page_title == @page_title
   end
 end

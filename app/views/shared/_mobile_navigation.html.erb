@@ -1,18 +1,25 @@
 <aside class="right-off-canvas-menu">
   <ul class="off-canvas-list">
-    <li class="<%= active_page(studio_switch1_path) %>"><%= link_to 'Switch 1', studio_switch1_path %></li>
-    <li class="<%= active_page(studio_switch2_path) %>"><%= link_to 'Switch 2', studio_switch2_path %></li>
-    <li class="<%= active_page(studio_extensions_path) %>"><%= link_to 'Extensions', studio_extensions_path %></li>
-    <li class="<%= active_page(studio_payloads_path) %>"><%= link_to 'Payloads', studio_payloads_path %></li>
-    <li class="<%= active_page(studio_loot_path) %>"><%= link_to 'Loot', studio_loot_path %></li>
-    <li class="<%= active_page(studio_debug_path) %>"><%= link_to 'Debug', studio_debug_path %></li>
-    <li class="<%= active_page(studio_git_path) %>"><%= link_to 'Git', studio_git_path %></li>
-    <li class="<%= active_page(studio_firmware_path) %>"><%= link_to 'Firmware', studio_firmware_path %></li>
-
     <% if bunny_mounted? %>
         <li class="bunny-status mounted"><a href="#" onclick="eject_bunny()"><%= fa_icon "eject" %> : <%= bunny_path %></a></li>
     <% else %>
         <li class="bunny-status unmounted"><a href="#" onclick="location.reload();"><%= fa_icon "refresh" %> : Bash Bunny Not Found</a>
     <% end %>
+    <% page_title = 'Switch 1' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_switch1_path %></li>
+    <% page_title = 'Switch 2' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_switch2_path %></li>
+    <% page_title = 'Extensions' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_extensions_path %></li>
+    <% page_title = 'Payloads' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_payloads_path %></li>
+    <% page_title = 'Loot' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_loot_path %></li>
+    <% page_title = 'Debug' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_debug_path %></li>
+    <% page_title = 'Git' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_git_path %></li>
+    <% page_title = 'Firmware' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_firmware_path %></li>
   </ul>
 </aside>

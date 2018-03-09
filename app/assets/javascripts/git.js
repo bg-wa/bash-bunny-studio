@@ -17,7 +17,7 @@ function cloneRepo(){
             alert('Repo NOT Cloned')
         });
     }else{
-        alert("Must be a BashBunny Repo");
+        alert("Must be a Bash Bunny Repo");
     }
 }
 
