@@ -2,9 +2,9 @@
 <% if bunny_mounted? %>
     <ul class="vertical menu">
       <% path = '/debug' %>
-      <% Dir.foreach("#{bunny_path}#{path}") do |debug_file| %>
+      <% Dir.foreach(@debug_path) do |debug_file| %>
           <% next if debug_file == '.' || debug_file == '..' %>
-          <li><a href="/studio/raw_file?path=<%= path %>&file=<%= debug_file %>" target="_blank"><%= debug_file %></a></li>
+          <li><a href="/studio/raw_file?path=<%= @debug_path %>&file=<%= debug_file %>" target="_blank"><%= debug_file %></a></li>
       <% end %>
     </ul>
 <% end %>

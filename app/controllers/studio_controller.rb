@@ -20,6 +20,10 @@ class StudioController < ApplicationController
 
   def loot
     @page_title = 'Loot'
+    if bunny_mounted?
+      @loot_path = "#{bunny_path}/loot"
+      FileUtils.mkpath @loot_path unless File.exist?(@loot_path)
+    end
   end
 
   def extensions
@@ -35,8 +39,8 @@ class StudioController < ApplicationController
   def debug
     @page_title = 'Debug'
     if bunny_mounted?
-      debug_path = "#{bunny_path}/debug"
-      FileUtils.mkpath debug_path unless File.exist?(debug_path)
+      @debug_path = "#{bunny_path}/debug"
+      FileUtils.mkpath @debug_path unless File.exist?(@debug_path)
     end
   end
 
@@ -142,6 +146,6 @@ class StudioController < ApplicationController
   end
 
   def raw_file
-    render plain: File.read("#{bunny_path}#{params[:path]}/#{params[:file]}")
+    render plain: File.read("#{params[:path]}/#{params[:file]}")
   end
 end
