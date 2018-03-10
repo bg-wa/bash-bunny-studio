@@ -16,14 +16,14 @@ $(document).ready(
 function writeConfig(){
     $.post('/studio/write_payload', {
         payload: code_editor.getValue(),
-        file: 'config.txt'
+        file: '/config.txt'
     }, function(response){
         response.status == 200 ? alert('Configuration Saved') : alert('Configuration Not Saved')
     });
 }
 
 function updateConfigEditor(){
-    $.getJSON('/studio/payload_script?file=config.txt', function(response){
+    $.getJSON('/studio/payload_script?file=/config.txt', function(response){
         code_editor.setValue(response.payload)
     });
 }
