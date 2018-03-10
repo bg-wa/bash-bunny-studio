@@ -20,7 +20,7 @@ function writePayload(switch_position){
         payload: code_editor.getValue(),
         file: file
     }, function(response){
-        alert('Payload Saved to ' + response.file)
+        response.status == 200 ? alert('Payload Saved to ' + response.file) : alert('File Not Saved')
     });
 }
 

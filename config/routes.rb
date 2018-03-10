@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'debug'
     get 'git'
     get 'learn'
+    get 'configure'
     get 'firmware'
 
     # API

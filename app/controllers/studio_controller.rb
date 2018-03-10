@@ -48,6 +48,10 @@ class StudioController < ApplicationController
     @page_title = 'Learn'
   end
 
+  def configure
+    @page_title = 'Configure'
+  end
+
   def firmware
     @page_title = 'Firmware'
   end
@@ -55,12 +59,18 @@ class StudioController < ApplicationController
   # API
 
   def write_payload
-    file_path = "#{bunny_path}#{params[:file]}"
-    File.open(file_path, 'w') { |file| file.write(params[:payload]) }
-    render json: {
-        status: 200,
-        file: file_path
-    }
+    if bunny_mounted?
+      file_path = "#{bunny_path}#{params[:file]}"
+      File.open(file_path, 'w') { |file| file.write(params[:payload]) }
+      render json: {
+          status: 200,
+          file: file_path
+      }
+    else
+      render json: {
+          status: 500
+      }
+    end
   end
 
   def clone_repo
@@ -87,32 +97,44 @@ class StudioController < ApplicationController
   end
 
   def sync_extensions
-    extension_path = '/payloads/extensions'
-    FileUtils.rm_r "#{bunny_path}#{extension_path}", force: true
-    FileUtils.mkpath "#{bunny_path}#{extension_path}"
-    extensions = params[:extensions].split(',')
-    index = 0
     if bunny_mounted?
-      Dir.foreach("#{local_repo_path}#{extension_path}") do |extension|
-        index += 1
-        next if extension == '.' || extension == '..'
-        if extensions.include?(index.to_s)
-          FileUtils.cp "#{local_repo_path}#{extension_path}/#{extension}", "#{bunny_path}#{extension_path}/#{extension}"
+      extension_path = '/payloads/extensions'
+      FileUtils.rm_r "#{bunny_path}#{extension_path}", force: true
+      FileUtils.mkpath "#{bunny_path}#{extension_path}"
+      extensions = params[:extensions].split(',')
+      index = 0
+      if bunny_mounted?
+        Dir.foreach("#{local_repo_path}#{extension_path}") do |extension|
+          index += 1
+          next if extension == '.' || extension == '..'
+          if extensions.include?(index.to_s)
+            FileUtils.cp "#{local_repo_path}#{extension_path}/#{extension}", "#{bunny_path}#{extension_path}/#{extension}"
+          end
         end
       end
+      render json: {
+          status: 200
+      }
+    else
+      render json: {
+          status: 500
+      }
     end
-    render json: {
-        status: 200
-    }
   end
 
   def copy_payload
-    FileUtils.rm_r "#{bunny_path}/payloads/switch#{params[:switch_position]}", force: true
-    FileUtils.mkpath "#{bunny_path}/payloads/switch#{params[:switch_position]}"
-    FileUtils.cp_r "#{params[:path]}/.", "#{bunny_path}/payloads/switch#{params[:switch_position]}/"
-    render json: {
-        status: 200
-    }
+    if bunny_mounted?
+      FileUtils.rm_r "#{bunny_path}/payloads/switch#{params[:switch_position]}", force: true
+      FileUtils.mkpath "#{bunny_path}/payloads/switch#{params[:switch_position]}"
+      FileUtils.cp_r "#{params[:path]}/.", "#{bunny_path}/payloads/switch#{params[:switch_position]}/"
+      render json: {
+          status: 200
+      }
+    else
+      render json: {
+          status: 500
+      }
+    end
   end
 
   def eject_bunny

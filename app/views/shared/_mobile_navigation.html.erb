@@ -19,6 +19,8 @@
     <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_debug_path %></li>
     <% page_title = 'Git' %>
     <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_git_path %></li>
+    <% page_title = 'Configure' %>
+    <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_configure_path %></li>
     <% page_title = 'Firmware' %>
     <li class="<%= active_page(page_title) %>"><%= link_to page_title, studio_firmware_path %></li>
   </ul>

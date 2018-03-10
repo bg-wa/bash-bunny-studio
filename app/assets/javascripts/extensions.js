@@ -8,6 +8,6 @@ function syncExtensions(){
         }
     });
     $.getJSON('/studio/sync_extensions?extensions=' + extension_ids, function(response){
-        alert('Extension Sync Finished')
+        response.status == 200 ? alert('Extensions Sync\'d') : alert('Extensions Not Sync\'d')
     });
 }
