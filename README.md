@@ -1,8 +1,8 @@
-# BashBunny Studio
+# Bash Bunny Studio
 
 This a web-based IDE to manage the Bash Bunny.
 
-It can run on a host machine, and allows you to mount/unmout the bunny, clone a BB github repo, one-click copy payloads to either switch, in-browser edit payloads, manage extensions, and view debug logs.
+It can run on a host machine, and allows you to mount/unmount the bunny, one-click copy payloads to either switch, in-browser edit payloads, manage extensions, edit BB Config, clone a BB github repo, view loot and debug logs and check firmware info.
 
 **Setup**
 - Install Ruby
