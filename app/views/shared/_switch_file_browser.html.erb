@@ -8,6 +8,7 @@
             <% next if switch_file == '.' || switch_file == '..' %>
             <li><a class="switch-<%= switch_position %> edit-file-link" onclick="updatePayloadEditor('<%= path %>', '<%= switch_file %>', <%= switch_position %>)"><%= switch_file %></a></li>
         <% end %>
+        <li><a class="mounted" onclick="createFileInput(<%= switch_position %>)">Create File</a></li>
       </ul>
   <% end %>
 </div>

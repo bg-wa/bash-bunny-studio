@@ -23,8 +23,14 @@ function writePayload(switch_position, file, create) {
         if (response.status == 200) {
             $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='success'>Payload saved to " + response.file + "</p>" +
                 close_alert_dialog_button)
-            $('#alert-dialog').foundation('reveal', 'open');
-            updateFileList(response.file)
+            var new_file = true;
+            response_file = response.file
+            $('.edit-file-link').each(function(index,link){
+                if(response_file.indexOf($(link).text()) >= 0){
+                    new_file = false;
+                }
+            })
+            new_file ? addToFileList(response_file) : $('#alert-dialog').foundation('reveal', 'open')
         } else {
             $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='alert'>File Not Saved</p>" + close_alert_dialog_button)
             $('#alert-dialog').foundation('reveal', 'open');
@@ -60,9 +66,11 @@ function createFile(switch_position){
   writePayload(switch_position, '/payloads/switch' + switch_position + '/' + $('#create-file-input').val(), true);
 }
 
-function updateFileList(file_path){
+function addToFileList(file_path){
     var split_file_name = file_path.split('/');
     var file_name = split_file_name[split_file_name.length -1];
     var switch_position = split_file_name[split_file_name.length -2].replace('switch', '');
-    $('#file-list').prepend('<li><a class="switch-' + switch_position + ' edit-file-link" onclick="updatePayloadEditor(\'/payloads/switch' + switch_position + '\', \'' + file_name + '\', ' + switch_position + ')">' + file_name + '</a></li>')
+    var relative_file_path = '/payloads/switch' + switch_position;
+    $('#file-list').prepend('<li><a class="switch-' + switch_position + ' edit-file-link" onclick="updatePayloadEditor(\'' + relative_file_path + '\', \'' + file_name + '\', ' + switch_position + ')">' + file_name + '</a></li>');
+    updatePayloadEditor(relative_file_path, file_name, switch_position);
 }

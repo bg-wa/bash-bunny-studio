@@ -12,7 +12,7 @@ $(document).ready(
 function copyPayload(switch_position, path){
     $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><div>Are you sure you want to overwrite Switch " + switch_position +"?</div>" +
         "<button class='button secondary' onclick='writeToSwitch(" + switch_position + ", \"" + path + "\")'>Yes</button>" +
-        "<button class='button' onclick='$(\"#alert-dialog\").foundation(\"reveal\", \"close\");'>Cancel</button>");
+        "<button class='button' onclick='closeDialog()'>Cancel</button>");
     $('#alert-dialog').foundation('reveal', 'open');
 }
 
