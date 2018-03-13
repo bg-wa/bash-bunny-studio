@@ -19,11 +19,11 @@ function writeConfig(){
         file: '/config.txt'
     }, function(response){
         if(response.status == 200){
-            $('#alert-dialog-content').html("<p class='success'>Configuration Saved</p>" +
+            $('#alert-dialog-content').html("<div class='text-center'>CONFIGURATION</div><p class='success'>Configuration Saved</p>" +
                 close_alert_dialog_button)
             $('#alert-dialog').foundation('reveal', 'open');
         }else{
-            $('#alert-dialog-content').html("<p class='alert'>Configuration NOT Saved</p>" + close_alert_dialog_button)
+            $('#alert-dialog-content').html("<div class='text-center'>CONFIGURATION</div><p class='alert'>Configuration NOT Saved</p>" + close_alert_dialog_button)
             $('#alert-dialog').foundation('reveal', 'open');
         }
     });
