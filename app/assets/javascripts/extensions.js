@@ -8,6 +8,13 @@ function syncExtensions(){
         }
     });
     $.getJSON('/studio/sync_extensions?extensions=' + extension_ids, function(response){
-        response.status == 200 ? alert('Extensions Sync\'d') : alert('Extensions Not Sync\'d')
+        if(response.status == 200){
+            $('#alert-dialog-content').html("<p class='success'>Extensions Sync'd</p>" +
+                close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }else{
+            $('#alert-dialog-content').html("<p class='alert'>Extensions Not Sync'd</p>" + close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }
     });
 }

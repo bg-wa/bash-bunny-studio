@@ -19,3 +19,5 @@
 //= require studio
 
 $(function(){ $(document).foundation(); });
+
+var close_alert_dialog_button = "<button class='button secondary' onclick='$(\"#alert-dialog\").foundation(\"reveal\", \"close\");'>OK</button>"

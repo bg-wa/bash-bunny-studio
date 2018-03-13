@@ -18,7 +18,14 @@ function writeConfig(){
         payload: code_editor.getValue(),
         file: '/config.txt'
     }, function(response){
-        response.status == 200 ? alert('Configuration Saved') : alert('Configuration Not Saved')
+        if(response.status == 200){
+            $('#alert-dialog-content').html("<p class='success'>Configuration Saved</p>" +
+                close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }else{
+            $('#alert-dialog-content').html("<p class='alert'>Configuration NOT Saved</p>" + close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }
     });
 }
 

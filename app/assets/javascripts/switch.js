@@ -20,7 +20,14 @@ function writePayload(switch_position){
         payload: code_editor.getValue(),
         file: file
     }, function(response){
-        response.status == 200 ? alert('Payload Saved to ' + response.file) : alert('File Not Saved')
+        if(response.status == 200){
+            $('#alert-dialog-content').html("<p class='success'>Payload saved to " + response.file +"</p>" +
+                close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }else{
+            $('#alert-dialog-content').html("<p class='alert'>File Not Saved</p>" + close_alert_dialog_button)
+            $('#alert-dialog').foundation('reveal', 'open');
+        }
     });
 }
 
