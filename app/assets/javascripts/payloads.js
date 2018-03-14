@@ -20,10 +20,10 @@ function writeToSwitch(switch_position, path){
     $.getJSON('/studio/copy_payload?switch_position=' + switch_position + "&path="+ path, function(response){
         if(response.status == 200){
             $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='success'>Payload copied to Switch " + switch_position +"</p>" +
-                close_alert_dialog_button)
+                close_alert_dialog_button())
             $('#alert-dialog').foundation('reveal', 'open');
         }else{
-            $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='alert'>Payload NOT Copied</p>" + close_alert_dialog_button)
+            $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='alert'>Payload NOT Copied</p>" + close_alert_dialog_button())
             $('#alert-dialog').foundation('reveal', 'open');
         }
     });

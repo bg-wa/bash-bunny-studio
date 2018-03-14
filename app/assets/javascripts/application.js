@@ -20,7 +20,9 @@
 
 $(function(){ $(document).foundation(); });
 
-var close_alert_dialog_button = "<button class='button secondary' onclick='closeDialog()'>OK</button>"
+function close_alert_dialog_button(callback_string){
+    return "<button class='button secondary' onclick='closeDialog(); " + callback_string + "'>OK</button>"
+}
 
 function closeDialog(){
     $('#alert-dialog-content').html('');

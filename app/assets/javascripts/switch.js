@@ -22,7 +22,7 @@ function writePayload(switch_position, file, create) {
     }, function (response) {
         if (response.status == 200) {
             $('#alert-dialog-content').html("<div class='text-center'>PAYLOAD</div><p class='success'>Payload saved to " + response.file + "</p>" +
-                close_alert_dialog_button)
+                close_alert_dialog_button())
             var new_file = true;
             response_file = response.file
             $('.edit-file-link').each(function(index,link){

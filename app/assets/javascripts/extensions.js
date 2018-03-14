@@ -10,10 +10,10 @@ function syncExtensions(){
     $.getJSON('/studio/sync_extensions?extensions=' + extension_ids, function(response){
         if(response.status == 200){
             $('#alert-dialog-content').html("<div class='text-center'>EXTENSIONS</div><p class='success'>Extensions Sync'd</p>" +
-                close_alert_dialog_button)
+                close_alert_dialog_button())
             $('#alert-dialog').foundation('reveal', 'open');
         }else{
-            $('#alert-dialog-content').html("<div class='text-center'>EXTENSIONS</div><p class='alert'>Extensions Not Sync'd</p>" + close_alert_dialog_button)
+            $('#alert-dialog-content').html("<div class='text-center'>EXTENSIONS</div><p class='alert'>Extensions Not Sync'd</p>" + close_alert_dialog_button())
             $('#alert-dialog').foundation('reveal', 'open');
         }
     });

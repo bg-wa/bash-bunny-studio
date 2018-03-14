@@ -18,7 +18,7 @@ function cloneRepo(){
             $('#alert-dialog').foundation('reveal', 'open');
         });
     }else{
-        $('#alert-dialog-content').html("<div class='text-center'>GITHUB</div><p class='alert'>Must be a Bash Bunny Repo</p>" + close_alert_dialog_button)
+        $('#alert-dialog-content').html("<div class='text-center'>GITHUB</div><p class='alert'>Must be a Bash Bunny Repo</p>" + close_alert_dialog_button())
         $('#alert-dialog').foundation('reveal', 'open');
     }
 }
@@ -27,7 +27,8 @@ function gitCommand(){
     $.getJSON('/studio/git_command?command=' + $('#git-command').val(), function(response){
         $('#git-command-response').text(response.output);
     }, function(err){
-        $('#alert-dialog-content').html("<div class='text-center'>GITHUB</div><p class='alert'>Command NOT Executed</p>" + close_alert_dialog_button)
+        $('#alert-dialog-content').html("<div class='text-center'>GITHUB</div><p class='alert'>Command NOT Executed</p>" +
+            close_alert_dialog_button())
         $('#alert-dialog').foundation('reveal', 'open');
     });
 }
