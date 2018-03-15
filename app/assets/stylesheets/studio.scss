@@ -1,28 +1,28 @@
-html, body{
+html, body {
   height: 100%;
 }
 
-.column-3{
+.column-3 {
   column-count: 3;
 }
 
-.CodeMirror{
+.CodeMirror {
   height: 70vh;
 }
 
-.data-table .odd{
+.data-table .odd {
   background: #b5b5b5 !important;
 }
 
-.data-table .even{
+.data-table .even {
   background: #c4c4c4 !important;
 }
 
-.main-section{
+.main-section {
   height: 75vh;
 }
 
-.logo{
+.logo {
   margin: 3px 10px 10px 5px;
   display: inline-block;
   border: solid 2px;
@@ -33,24 +33,25 @@ html, body{
   background: none repeat scroll 0% 0%;
 }
 
-.unmounted{
+.unmounted {
   background-color: #ec5840;
   border-color: #ec5840;
 }
 
-.mounted{
+.mounted {
   background-color: #13c25c;
   border-color: #13c25c;
 }
 
-.is-active{
+.is-active {
   background-color: #008CBA;
   border-color: #008CBA;
 }
 
-iframe{
-  height:100%;
-  width:100%;
+iframe {
+  height: 100%;
+  width: 100%;
+  min-height: 600px;
   border: none;
 }
 
