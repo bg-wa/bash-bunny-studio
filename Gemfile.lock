@@ -106,6 +106,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    os (1.0.0)
     public_suffix (3.0.2)
     puma (3.11.2)
     rack (2.0.4)
@@ -140,6 +141,11 @@ GEM
       ffi (>= 0.5.0, < 2)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    rvt (1.0.0)
+      activemodel (>= 4.0)
+      coffee-rails
+      railties (>= 4.0)
+      sprockets-rails
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -202,8 +208,10 @@ DEPENDENCIES
   jquery-datatables-rails (~> 3.4.0)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  os
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rvt
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

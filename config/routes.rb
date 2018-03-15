@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'learn'
     get 'configure'
     get 'firmware'
+    get 'console'
 
     # API
     get 'clone_repo'

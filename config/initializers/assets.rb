@@ -21,4 +21,5 @@ Rails.application.config.assets.precompile += %w( switch.js
                                                   debug.js
                                                   configure.js
                                                   firmware.js
+                                                  console.js
                                                   bashbunny.svg )
