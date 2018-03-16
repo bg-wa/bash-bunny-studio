@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'sync_extensions'
     get 'raw_file'
     get 'payload_script'
+    get 'share_internet'
 
     post 'write_payload'
   end
