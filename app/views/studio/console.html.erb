@@ -1,0 +1,27 @@
+<%= javascript_include_tag 'console' %>
+<% if bunny_mounted? %>
+<div class="row">
+  <div class="medium-10 columns">
+    <iframe id="console" src="/console"></iframe>
+  </div>
+  <div class="medium-2 columns">
+    <p style="font-size: x-small; color: #ec5840">
+      This feature is Experimental!!!<br/>
+      Not all characters will be displayed.<br/>
+      Press [Enter] if unresponsive.<br/>
+      EVERYTHING YOU TYPE WILL BE SENT OVER HTTP<br/>
+    </p>
+    <ul class="menu mounted">
+      <li>
+        <a href="https://wiki.bashbunny.com" target="_blank">Bash Bunny Wiki</a>
+      </li>
+    </ul>
+    <!--<h5>Bash Bunny Login</h5>-->
+    <!--<p>-->
+      <!--Username: root<br/>-->
+      <!--Password: hak5bunny<br/>-->
+    <!--</p>-->
+    <!--<button class="button" onclick="shareInternet()">Share internet with Bash Bunny</button>-->
+  </div>
+</div>
+<% end %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'learn'
     get 'configure'
     get 'firmware'
+    get 'console'
 
     # API
     get 'clone_repo'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     get 'sync_extensions'
     get 'raw_file'
     get 'payload_script'
+    get 'share_internet'
 
     post 'write_payload'
   end

@@ -170,4 +170,8 @@ class StudioController < ApplicationController
   def raw_file
     render plain: File.read("#{params[:path]}/#{params[:file]}")
   end
+
+  def share_internet
+  #   download and run bb.sh here
+  end
 end
